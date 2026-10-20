@@ -6,10 +6,10 @@ The full analysis is in [`students_performance_analysis.ipynb`](students_perform
 
 ## Key Findings
 
-- **Mid-year grades dominate.** The first- and second-period grades (`G1`, `G2`) explain $88\%$ of the variance of the final grade. Once they are known, no other factor adds statistically significant information, and a tuned XGBoost model with all features does no better than a linear model with `G1` and `G2` alone.
-- **Past failures are the strongest early warning sign.** Without any grades, past class failures explain $18\%$ of the variance of the final grade ($\text{Spearman's} \rho = −0.43$), followed by plans for higher education and the mother's education level. Together with the school, past failures separate passing from failing students best ($\text{AUC} = 0.78$).
-- **Background factors alone explain about 30%.** All non-grade factors together explain $27–31\%$ of the variance of the final grade, which is enough for a start-of-year early warning signal.
-- **The two schools differ sharply.** $25.5\%$ of Mousinho da Silveira students fail, compared with $7.4\%$ at Gabriel Pereira, and 14 of the 15 students who missed the final exam were from Mousinho da Silveira.
+- **Mid-year grades dominate.** The first- and second-period grades (`G1`, `G2`) explain 88% of the variance of the final grade. Once they are known, no other factor adds statistically significant information, and a tuned XGBoost model with all features does no better than a linear model with `G1` and `G2` alone.
+- **Past failures are the strongest early warning sign.** Without any grades, past class failures explain 18% of the variance of the final grade ($\text{Spearman's }\rho = −0.43$), followed by plans for higher education and the mother's education level. Together with the school, past failures separate passing from failing students best ($\text{AUC} = 0.78$).
+- **Background factors alone explain about 30%.** All non-grade factors together explain 27–31% of the variance of the final grade, which is enough for a start-of-year early warning signal.
+- **The two schools differ sharply.** 25.5% of Mousinho da Silveira students fail, compared with 7.4% at Gabriel Pereira, and 14 of the 15 students who missed the final exam were from Mousinho da Silveira.
 - **School support and paid classes.** Students who receive them score slightly lower, but they also started the year with lower grades, so this data cannot show whether support works.
 
 All findings are associations found in survey data, not causal effects.
@@ -44,7 +44,7 @@ The analysis uses the Portuguese language course data: 649 students, 33 columns 
 ## Approach
 
 - **Exploratory analysis** grouped by family, educational and social factors, plus a comparison of the two schools. Plots show group sizes, and grades are also compared as fail / sufficient–good / very good–excellent categories based on the Portuguese grading scale.
-- **Statistical tests** chosen for the data types: $\text{Spearman's} \rho$ and Kruskal–Wallis for ordinal features, Mann–Whitney U for two-group comparisons, $\eta^2$ as the effect size, and Holm correction for multiple comparisons.
+- **Statistical tests** chosen for the data types: $\text{Spearman's }\rho$ and Kruskal–Wallis for ordinal features, Mann–Whitney U for two-group comparisons, $\eta^2$ as the effect size, and Holm correction for multiple comparisons.
 - **Confounding checks**, for example parents' jobs within the same education level, and internet access within urban and rural homes.
 - **Nested linear models with F-tests** to measure what each factor adds once mid-year grades are known.
 - **Depth-2 decision trees** for all 435 pairs of features, compared fold by fold with repeated stratified cross-validation.
